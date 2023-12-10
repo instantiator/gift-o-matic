@@ -14,7 +14,7 @@ export default function MachineControl({
   puzzle: Puzzle;
   index: number;
   onSuccess: (index: number, puzzle: Puzzle) => void;
-  onFailure: (index: number) => void;
+  onFailure: (index: number, puzzle: Puzzle) => void;
   firstUnsolved: number | null;
 }) {
   const [answer, setAnswer] = useState("");
@@ -27,10 +27,10 @@ export default function MachineControl({
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault();
-    if (answer === puzzle.answer) {
+    if (answer.trim().localeCompare(puzzle.answer.trim(), undefined, { sensitivity: 'base' }) === 0) {
       onSuccess(index, puzzle);
     } else {
-      onFailure(index);
+      onFailure(index, puzzle);
     }
   };
 

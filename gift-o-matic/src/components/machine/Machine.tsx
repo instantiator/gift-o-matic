@@ -27,12 +27,14 @@ export default function Machine() {
   }, [puzzles]);
 
   const onSuccess = (index: number, puzzle: Puzzle) => {
+    console.log('Solved puzzle', index, puzzle);
     puzzles[index].solved = true;
     setPuzzles([...puzzles]);
     setSpeech("Oh well done!");
   };
 
-  const onFailure = (index: number) => {
+  const onFailure = (index: number, puzzle: Puzzle) => {
+    console.log('Incorrect solution for puzzle', index, puzzle);
     setSpeech("Oh no, that's not right!");
   };
 

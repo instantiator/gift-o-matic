@@ -14,13 +14,14 @@ export default function Machine() {
   const [speech, setSpeech] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log('Resetting active puzzles', game.puzzles);
     setPuzzles([...game.puzzles]);
   }, [game.puzzles]);
 
   useEffect(() => {
     let unsolved = puzzles.find((puzzle) => !puzzle.solved);
     setFirstUnsolved(!!unsolved ? puzzles.indexOf(unsolved) : null);
-    if (unsolved === undefined) {
+    if (puzzles.length > 0 && unsolved === undefined) {
       setSpeech("Well done, you've solved all the puzzles!");
     }
   }, [puzzles]);
@@ -56,6 +57,7 @@ export default function Machine() {
               {puzzles.map((puzzle, index) => (
                 <MachineControl
                   puzzle={puzzle}
+                  key={`puzzle-${puzzle.id}`}
                   index={index}
                   onSuccess={onSuccess}
                   onFailure={onFailure}

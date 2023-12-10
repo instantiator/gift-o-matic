@@ -1,14 +1,29 @@
-'use client';
+"use client";
 
-import { useContext } from "react";
-import { GameContext } from "../game/GameProvider";
+import { Puzzle } from "../game/GameProvider";
 
-export default function MachineDisplay({}) {
-const game = useContext(GameContext);
-
+export default function MachineDisplay({
+  puzzles,
+  firstUnsolved,
+  speech,
+}: {
+  puzzles: Puzzle[];
+  firstUnsolved: number | null;
+  speech: string | null;
+}) {
   return (
     <>
-        display
+      {!!speech && (
+        <>
+          <h2>{speech}</h2>
+        </>
+      )}
+      {firstUnsolved !== null && (
+        <>
+          <h2>{puzzles[firstUnsolved].title}</h2>
+          <p>{puzzles[firstUnsolved].clue}</p>
+        </>
+      )}
     </>
   );
 }

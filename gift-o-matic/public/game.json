@@ -1,3 +1,10 @@
 {
-    "something": "yes"
+    "puzzles": [
+        { "id": 1, "title": "Puzzle 1", "clue": "Clue for puzzle 1", "hint": "Hint for puzzle 1", "answer": "", "colour": "red", "variant": "danger" },
+        { "id": 2, "title": "Puzzle 2", "clue": "Clue for puzzle 2", "hint": "Hint for puzzle 2", "answer": "", "colour": "turquoise", "variant": "info" },
+        { "id": 3, "title": "Puzzle 3", "clue": "Clue for puzzle 3", "hint": "Hint for puzzle 3", "answer": "", "colour": "purple", "variant": "secondary" },
+        { "id": 4, "title": "Puzzle 4", "clue": "Clue for puzzle 4", "hint": "Hint for puzzle 4", "answer": "", "colour": "blue", "variant": "primary" },
+        { "id": 5, "title": "Puzzle 5", "clue": "Clue for puzzle 5", "hint": "Hint for puzzle 5", "answer": "", "colour": "green", "variant": "success" },
+        { "id": 6, "title": "Puzzle 6", "clue": "Clue for puzzle 6", "hint": "Hint for puzzle 6", "answer": "", "colour": "yellow", "variant": "warning" }
+    ]
 }

@@ -27,7 +27,7 @@ export default function RootLayout({
             backgroundPositionX: 'center',
             backgroundPositionY: 'bottom'
           }}>
-          <Container fluid>{children}</Container>
+          {children}
         </div>
       </body>
     </html>

@@ -9,8 +9,19 @@ export enum GameState {
     Ready
 };
 
+export interface Puzzle {
+    id: number;
+    title: string;
+    clue: string;
+    hint: string;
+    answer: string;
+    colour: string;
+    variant: string;
+    solved: boolean | undefined;
+};
+
 export interface GameData {
-    something: string | undefined;
+    puzzles: Puzzle[];
     state: GameState;
 };
 
@@ -19,8 +30,8 @@ export const GameContext = createContext({} as GameData);
 export default function GameProvider({ src, children }: { src: string, children: React.ReactNode }) {
 
     const [data, setData] = useState<GameData>({
-        something: undefined,
-        state: GameState.Init
+        state: GameState.Init,
+        puzzles: []
     });
 
     // switch state to execute each next step

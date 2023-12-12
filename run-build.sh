@@ -2,6 +2,6 @@
 
 ./build.sh
 
-pushd gift-o-matic/out
+pushd puzzle-matic/out
 python3 -m http.server 3000
 popd

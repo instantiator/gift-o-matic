@@ -5,6 +5,7 @@ import { GameContext, GameState, Puzzle } from "../game/GameProvider";
 import { Container, Form, Stack } from "react-bootstrap";
 import MachineDisplay from "./MachineDisplay";
 import MachineControl from "./MachineControl";
+import CharacterDisplay from "./CharacterDisplay";
 
 export default function Machine() {
   const game = useContext(GameContext);
@@ -14,7 +15,7 @@ export default function Machine() {
   const [speech, setSpeech] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log('Resetting active puzzles', game.puzzles);
+    console.log("Resetting active puzzles", game.puzzles);
     setPuzzles([...game.puzzles]);
   }, [game.puzzles]);
 
@@ -27,14 +28,14 @@ export default function Machine() {
   }, [puzzles]);
 
   const onSuccess = (index: number, puzzle: Puzzle) => {
-    console.log('Solved puzzle', index, puzzle);
+    console.log("Solved puzzle", index, puzzle);
     puzzles[index].solved = true;
     setPuzzles([...puzzles]);
     setSpeech("Oh well done!");
   };
 
   const onFailure = (index: number, puzzle: Puzzle) => {
-    console.log('Incorrect solution for puzzle', index, puzzle);
+    console.log("Incorrect solution for puzzle", index, puzzle);
     setSpeech("Oh no, that's not right!");
   };
 
@@ -42,6 +43,10 @@ export default function Machine() {
     <>
       {game.state === GameState.Ready && (
         <>
+          <div style={{ position: "fixed", top: "20px", width: "90%" }}>
+            <CharacterDisplay img="/santa.jpg" speech={speech} />
+          </div>
+
           <Stack
             gap={3}
             style={{ position: "fixed", bottom: "20px", width: "90%" }}
@@ -50,7 +55,11 @@ export default function Machine() {
               style={{ border: "solid 2px black", backgroundColor: "#efefef" }}
               className="shadow"
             >
-              <MachineDisplay puzzles={puzzles} firstUnsolved={firstUnsolved} speech={speech} />
+              <MachineDisplay
+                puzzles={puzzles}
+                firstUnsolved={firstUnsolved}
+                speech={speech}
+              />
             </div>
             <div
               style={{ border: "solid 2px black", backgroundColor: "#efefef" }}

@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Gift-o-matic",
-  description: "Santa's little helper",
+  title: "Puzzle-matic",
+  description: "A puzzle-solving game",
 };
 
 export default function RootLayout({

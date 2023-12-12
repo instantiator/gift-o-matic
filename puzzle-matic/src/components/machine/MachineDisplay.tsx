@@ -13,15 +13,12 @@ export default function MachineDisplay({
 }) {
   return (
     <>
-      {!!speech && (
-        <>
-          <h2>{speech}</h2>
-        </>
-      )}
       {firstUnsolved !== null && (
         <>
-          <h2>{puzzles[firstUnsolved].title}</h2>
-          <p>{puzzles[firstUnsolved].clue}</p>
+          <div style={{ padding: 5 }}>
+            <h2>{puzzles[firstUnsolved].title}</h2>
+            <p>{puzzles[firstUnsolved].clue}</p>
+          </div>
         </>
       )}
     </>

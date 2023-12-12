@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pushd gift-o-matic
+pushd puzzle-matic
 npm run dev
 popd

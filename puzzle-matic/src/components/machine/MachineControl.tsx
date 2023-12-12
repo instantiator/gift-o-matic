@@ -53,10 +53,9 @@ export default function MachineControl({
         {index === firstUnsolved && (
           <>
             <Row>
-              <Col>
+              <Col xs="auto">
                 <Form.Text className="text-muted">{puzzle.hint}</Form.Text>
               </Col>
-              <Col></Col>
             </Row>
             <Row>
               <Col>

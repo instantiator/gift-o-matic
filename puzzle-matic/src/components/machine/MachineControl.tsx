@@ -2,7 +2,8 @@
 
 import { useContext, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { GameContext, Puzzle } from "../game/GameProvider";
+import { GameContext } from "../game/GameProvider";
+import { Puzzle } from "../game/GameData";
 
 export default function MachineControl({
   puzzle,
@@ -44,7 +45,7 @@ export default function MachineControl({
           <>
             <Row>
               <Col>
-              <b>Solved!</b> {puzzle.answer}
+              <b style={{color: 'green'}}>Solved!</b> {puzzle.answer}
               </Col>
             </Row>
           </>

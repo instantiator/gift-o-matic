@@ -1,29 +1,7 @@
 'use client';
 
 import React, { createContext, useEffect, useState } from "react";
-
-export enum GameState {
-    Init,
-    Loading,
-    Error,
-    Ready
-};
-
-export interface Puzzle {
-    id: number;
-    title: string;
-    clue: string;
-    hint: string;
-    answer: string;
-    colour: string;
-    variant: string;
-    solved: boolean | undefined;
-};
-
-export interface GameData {
-    puzzles: Puzzle[];
-    state: GameState;
-};
+import { GameData, GameState } from "./GameData";
 
 export const GameContext = createContext({} as GameData);
 
@@ -31,7 +9,8 @@ export default function GameProvider({ src, children }: { src: string, children:
 
     const [data, setData] = useState<GameData>({
         state: GameState.Init,
-        puzzles: []
+        puzzles: [],
+        character: null
     });
 
     // switch state to execute each next step

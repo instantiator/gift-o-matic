@@ -1,10 +1,54 @@
 {
-    "puzzles": [
-        { "id": 1, "title": "Puzzle 1", "clue": "Clue for puzzle 1", "hint": "Hint for puzzle 1", "answer": "1", "colour": "red", "variant": "danger" },
-        { "id": 2, "title": "Puzzle 2", "clue": "Clue for puzzle 2", "hint": "Hint for puzzle 2", "answer": "2", "colour": "turquoise", "variant": "info" },
-        { "id": 3, "title": "Puzzle 3", "clue": "Clue for puzzle 3", "hint": "Hint for puzzle 3", "answer": "3", "colour": "purple", "variant": "secondary" },
-        { "id": 4, "title": "Puzzle 4", "clue": "Clue for puzzle 4", "hint": "Hint for puzzle 4", "answer": "4", "colour": "blue", "variant": "primary" },
-        { "id": 5, "title": "Puzzle 5", "clue": "Clue for puzzle 5", "hint": "Hint for puzzle 5", "answer": "5", "colour": "green", "variant": "success" },
-        { "id": 6, "title": "Puzzle 6", "clue": "Clue for puzzle 6", "hint": "Hint for puzzle 6", "answer": "6", "colour": "yellow", "variant": "warning" }
-    ]
+  "character": {
+    "name": "Character Name",
+    "image": "/santa.jpg"
+  },
+  "puzzles": [
+    {
+      "id": 1,
+      "title": "Carly's challenge",
+      "clue": "Carly is trying to find her way into the garden. She can see the garden through all the big windows, but she can't get through the glass! Can you find her?",
+      "image": "/map-01-carly.gif",
+      "hint": "What word does Carly's clues give you?",
+      "answer": "bee",
+      "colour": "#33cc33",
+      "variant": "success"
+    },
+    {
+      "id": 2,
+      "title": "Beatrice's bag",
+      "clue": "Bees like <b>landing</b> in high places... Beatrice Bee has some lovely photos. Can you arrange them in order?",
+      "image": "/map-02-beatrice.gif",
+      "hint": "Is there a secret word in her photos?",
+      "answer": "spider",
+      "colour": "#cccc33",
+      "variant": "info"
+    },
+    {
+      "id": 3,
+      "title": "Sid's secret message",
+      "clue": "Sid can help you. Sid the spider likes dangling in trees.",
+      "image": "/map-03-sid.gif",
+      "hint": "Do Sid's little gifts shine a new light on his letter?",
+      "answer": "ladybird",
+      "colour": "#9933cc",
+      "variant": "primary"
+    },
+    {
+      "id": 4,
+      "title": "Lucas's little friends",
+      "clue": "Lucas the ladybird likes to play. He's surrounded by toys. Can you find him? I think he knows the code to my box.",
+      "image": "/map-04-lucas.gif",
+      "hint": "Do Lucas's friends know a secret number?",
+      "answer": "731",
+      "colour": "#cc3333",
+      "variant": "danger"
+    }
+  ],
+  "final": {
+    "title": "Well done!",
+    "message": "You have found the code to my box. Thank you so much for your help.",
+    "speech": "Ho ho ho! Well done little ones!",
+    "image": "/win.jpg"
+  }
 }

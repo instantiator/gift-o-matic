@@ -1,11 +1,12 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { GameContext, GameState, Puzzle } from "../game/GameProvider";
+import { GameContext } from "../game/GameProvider";
 import { Container, Form, Stack } from "react-bootstrap";
 import MachineDisplay from "./MachineDisplay";
 import MachineControl from "./MachineControl";
 import CharacterDisplay from "./CharacterDisplay";
+import { GameState, Puzzle } from "../game/GameData";
 
 export default function Machine() {
   const game = useContext(GameContext);
@@ -23,7 +24,7 @@ export default function Machine() {
     let unsolved = puzzles.find((puzzle) => !puzzle.solved);
     setFirstUnsolved(!!unsolved ? puzzles.indexOf(unsolved) : null);
     if (puzzles.length > 0 && unsolved === undefined) {
-      setSpeech("Well done, you've solved all the puzzles!");
+      setSpeech(game.final.speech);
     }
   }, [puzzles]);
 
@@ -43,40 +44,79 @@ export default function Machine() {
     <>
       {game.state === GameState.Ready && (
         <>
-          <div style={{ position: "fixed", top: "20px", width: "90%" }}>
-            <CharacterDisplay img="/santa.jpg" speech={speech} />
-          </div>
+          {game.character && (
+            <div style={{ position: "fixed", top: "20px", width: "90%" }}>
+              <CharacterDisplay character={game.character} speech={speech} />
+            </div>
+          )}
 
           <Stack
             gap={3}
             style={{ position: "fixed", bottom: "20px", width: "90%" }}
           >
-            <div
-              style={{ border: "solid 2px black", backgroundColor: "#efefef" }}
-              className="shadow"
-            >
-              <MachineDisplay
-                puzzles={puzzles}
-                firstUnsolved={firstUnsolved}
-                speech={speech}
+            <div>
+              <img
+                src="/holly.png"
+                alt="decorative holly"
+                style={{ maxWidth: "30%" }}
               />
+              <br />
+              <div
+                style={{
+                  border: "solid 2px black",
+                  backgroundColor: "#aa3333",
+                  padding: 10,
+                  borderRadius: 15,
+                }}
+                className="shadow"
+              >
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    padding: 10,
+                    borderRadius: 10,
+                    color: "#333333",
+                  }}
+                >
+                  <MachineDisplay
+                    puzzles={puzzles}
+                    final={game.final}
+                    firstUnsolved={firstUnsolved}
+                    speech={speech}
+                  />
+                </div>
+              </div>
             </div>
-            <div
-              style={{ border: "solid 2px black", backgroundColor: "#efefef" }}
-              className="shadow"
-            >
-              {puzzles.map((puzzle, index) => (
-                <MachineControl
-                  puzzle={puzzle}
-                  key={`puzzle-${puzzle.id}`}
-                  index={index}
-                  onSuccess={onSuccess}
-                  onFailure={onFailure}
-                  firstUnsolved={firstUnsolved}
-                />
-              ))}
+              <div
+                style={{
+                  border: "solid 2px black",
+                  backgroundColor: game.puzzles[firstUnsolved ?? 0].colour,
+                  padding: 10,
+                  borderRadius: 15,
+                }}
+                className="shadow"
+              >
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    padding: 10,
+                    borderRadius: 10,
+                    color: "#333333",
+                  }}
+                >
+                  {puzzles.map((puzzle, index) => (
+                    <MachineControl
+                      puzzle={puzzle}
+                      key={`puzzle-${puzzle.id}`}
+                      index={index}
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      firstUnsolved={firstUnsolved}
+                    />
+                  ))}
+                </div>
+              </div>
               {/* <div>MACHINE: {GameState[game.state]}</div> */}
-            </div>
           </Stack>
         </>
       )}

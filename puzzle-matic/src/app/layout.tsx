@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "A puzzle-solving game",
 };
 
+const PREFIX = process.env.NEXT_PUBLIC_PATH_PREFIX;
+
 export default function RootLayout({
   children,
 }: {
@@ -22,7 +24,7 @@ export default function RootLayout({
         <div
           className="App min-vh-100 d-flex justify-content-center align-items-center"
           style={{
-            backgroundImage: 'url("/backdrop-blank.png")',
+            backgroundImage: `url("${PREFIX}/backdrop-blank.png")`,
             backgroundSize: 'cover',
             backgroundPositionX: 'center',
             backgroundPositionY: 'bottom'

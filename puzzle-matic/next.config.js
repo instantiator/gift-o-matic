@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { output: "export" };
+
+const PREFIX = process.env.NEXT_PUBLIC_PATH_PREFIX;
+const assetPrefix = `${PREFIX}/`
+const basePath = `${PREFIX}`
+
+const nextConfig = { 
+    output: "export",
+    assetPrefix: assetPrefix,
+    basePath: basePath,
+    reactStrictMode: false,
+    trailingSlash: true,
+    reactStrictMode: false
+};
 module.exports = nextConfig;
-module.exports.reactStrictMode = false;
-// module.exports.trailingSlash = true;
-module.exports = nextConfig
+console.log("nextConfig", nextConfig);

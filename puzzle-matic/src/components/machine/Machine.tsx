@@ -8,6 +8,8 @@ import MachineControl from "./MachineControl";
 import CharacterDisplay from "./CharacterDisplay";
 import { GameState, Puzzle } from "../game/GameData";
 
+const PREFIX = process.env.NEXT_PUBLIC_PATH_PREFIX;
+
 export default function Machine() {
   const game = useContext(GameContext);
 
@@ -43,20 +45,16 @@ export default function Machine() {
   return (
     <>
       {game.state === GameState.Ready && (
-        <>
+        <div style={{ width: '90%', paddingTop: 20, paddingBottom: 20 }}>
+
+          <Stack gap={3}>
           {game.character && (
-            <div style={{ position: "fixed", top: "20px", width: "90%" }}>
-              <CharacterDisplay character={game.character} speech={speech} />
-            </div>
+            <CharacterDisplay character={game.character} speech={speech} />
           )}
 
-          <Stack
-            gap={3}
-            style={{ position: "fixed", bottom: "20px", width: "90%" }}
-          >
             <div>
               <img
-                src="/holly.png"
+                src={`${PREFIX}/holly.png`}
                 alt="decorative holly"
                 style={{ maxWidth: "30%" }}
               />
@@ -118,7 +116,7 @@ export default function Machine() {
               </div>
               {/* <div>MACHINE: {GameState[game.state]}</div> */}
           </Stack>
-        </>
+        </div>
       )}
     </>
   );

@@ -10,7 +10,13 @@ export default function GameProvider({ src, children }: { src: string, children:
     const [data, setData] = useState<GameData>({
         state: GameState.Init,
         puzzles: [],
-        character: null
+        character: null,
+        final: {
+            title: '',
+            message: '',
+            speech: '',
+            image: ''
+        }
     });
 
     // switch state to execute each next step
